@@ -1,0 +1,195 @@
+# ===========================================================================
+# Multilingual file for the TOS 7 Docker application "qbittorrentdocker".
+# File name MUST be: <appid>.lang.  23-language superset (14 required by TOS).
+# The App Center picks the text matching the user's device language;
+# untranslated nodes fall back to English, which the official guide allows.
+# Fields: name (app title), auth (upstream author), descript (up to 512
+# chars), release_note, important (up to 512 chars).
+# Translations come from tosapp.json "translations"; run
+#   tosdocker lang <app>          to re-render this file
+#   tosdocker translate <app>     to see what still needs translating
+# ===========================================================================
+[en-us]
+name         = "qBittorrent"
+auth         = "qbittorrent"
+version      = "@@VERSION@@"
+descript     = "qBittorrent is a full-featured BitTorrent client with a clean web UI: add magnet links or .torrent files, queue and seed, set speed limits, search for torrents and use RSS. It runs as a non-root container on your NAS, keeps settings and resume data in the application data folder, and writes downloads into a folder you control - no desktop client needed."
+release_note = "1. First release: qBittorrent 5.3.0 from Docker Hub as a non-root container. Full WebUI with temporary first-run password, settings and resume data in the application data folder, downloads in a separate folder."
+important    = "Requires DockerEngine (installed automatically if missing). The first start prints a temporary admin password in the container log (docker logs qbittorrentdocker) - log in as admin and change it immediately. Downloads land in DockerAppData/qbittorrentdocker/downloads, settings in .../config. Only the WebUI port is published: the BT listen port (6881) is not, so incoming peers are limited and speeds may be lower than a desktop client. Plain HTTP; use a TLS reverse proxy before exposing it."
+
+[zh-cn]
+name         = "qBittorrent"
+auth         = "qbittorrent"
+version      = "@@VERSION@@"
+descript     = "qBittorrent 是一款功能完整的 BT 客户端，自带清爽的网页界面：添加磁力链接或 .torrent、排队与做种、限速、搜索种子、RSS 订阅都可以在浏览器里完成。它以非 root 容器运行在 NAS 上，设置与续传数据保存在应用数据目录，下载文件放在你指定的目录，不需要装桌面客户端。"
+release_note = "1. 首个版本：基于 Docker Hub 的 qBittorrent 5.3.0，以非 root 容器运行。完整 WebUI 与首次临时密码，设置与续传数据保存在应用数据目录，下载文件单独存放。"
+important    = "需要 DockerEngine（缺失时应用中心会自动安装）。首次启动会在容器日志里打印临时管理员密码（docker logs qbittorrentdocker），用 admin 登录后请立刻修改。下载文件在 DockerAppData/qbittorrentdocker/downloads，设置在 .../config。只发布了 WebUI 端口，BT 监听端口（6881）没有发布，因此只能主动连出、入站连接较少，速度可能不如桌面客户端；如运营商封锁 P2P 请配合 VPN/代理。界面为纯 HTTP，外网访问请配置带 TLS 的反向代理。"
+
+[zh-hk]
+name         = "qBittorrent"
+auth         = "qbittorrent"
+version      = "@@VERSION@@"
+descript     = "qBittorrent 是一款功能完整的 BT 客戶端，自帶清爽的網頁介面：新增磁力連結或 .torrent、排隊與做種、限速、搜尋種子、RSS 訂閱都可以在瀏覽器裡完成。它以非 root 容器運行在 NAS 上，設定與續傳資料保存在應用資料目錄，下載檔案放在你指定的目錄，不需要裝桌面客戶端。"
+release_note = "1. 首個版本：基於 Docker Hub 的 qBittorrent 5.3.0，以非 root 容器運行。完整 WebUI 與首次臨時密碼，設定與續傳資料保存在應用資料目錄，下載檔案單獨存放。"
+important    = "需要 DockerEngine（缺少時應用中心會自動安裝）。首次啟動會在容器日誌裡印出臨時管理員密碼（docker logs qbittorrentdocker），用 admin 登入後請立刻修改。下載檔案在 DockerAppData/qbittorrentdocker/downloads，設定在 .../config。只發佈了 WebUI 端口，BT 監聽端口（6881）沒有發佈，因此只能主動連出、入站連線較少，速度可能不如桌面客戶端；如ISP封鎖 P2P 請配合 VPN/代理。介面為純 HTTP，外網存取請配置帶 TLS 的反向代理。"
+
+[fr-fr]
+name         = "qBittorrent"
+auth         = "qbittorrent"
+version      = "@@VERSION@@"
+descript     = "qBittorrent is a full-featured BitTorrent client with a clean web UI: add magnet links or .torrent files, queue and seed, set speed limits, search for torrents and use RSS. It runs as a non-root container on your NAS, keeps settings and resume data in the application data folder, and writes downloads into a folder you control - no desktop client needed."
+release_note = "1. First release: qBittorrent 5.3.0 from Docker Hub as a non-root container. Full WebUI with temporary first-run password, settings and resume data in the application data folder, downloads in a separate folder."
+important    = "Requires DockerEngine (installed automatically if missing). The first start prints a temporary admin password in the container log (docker logs qbittorrentdocker) - log in as admin and change it immediately. Downloads land in DockerAppData/qbittorrentdocker/downloads, settings in .../config. Only the WebUI port is published: the BT listen port (6881) is not, so incoming peers are limited and speeds may be lower than a desktop client. Plain HTTP; use a TLS reverse proxy before exposing it."
+
+[de-de]
+name         = "qBittorrent"
+auth         = "qbittorrent"
+version      = "@@VERSION@@"
+descript     = "qBittorrent is a full-featured BitTorrent client with a clean web UI: add magnet links or .torrent files, queue and seed, set speed limits, search for torrents and use RSS. It runs as a non-root container on your NAS, keeps settings and resume data in the application data folder, and writes downloads into a folder you control - no desktop client needed."
+release_note = "1. First release: qBittorrent 5.3.0 from Docker Hub as a non-root container. Full WebUI with temporary first-run password, settings and resume data in the application data folder, downloads in a separate folder."
+important    = "Requires DockerEngine (installed automatically if missing). The first start prints a temporary admin password in the container log (docker logs qbittorrentdocker) - log in as admin and change it immediately. Downloads land in DockerAppData/qbittorrentdocker/downloads, settings in .../config. Only the WebUI port is published: the BT listen port (6881) is not, so incoming peers are limited and speeds may be lower than a desktop client. Plain HTTP; use a TLS reverse proxy before exposing it."
+
+[it-it]
+name         = "qBittorrent"
+auth         = "qbittorrent"
+version      = "@@VERSION@@"
+descript     = "qBittorrent is a full-featured BitTorrent client with a clean web UI: add magnet links or .torrent files, queue and seed, set speed limits, search for torrents and use RSS. It runs as a non-root container on your NAS, keeps settings and resume data in the application data folder, and writes downloads into a folder you control - no desktop client needed."
+release_note = "1. First release: qBittorrent 5.3.0 from Docker Hub as a non-root container. Full WebUI with temporary first-run password, settings and resume data in the application data folder, downloads in a separate folder."
+important    = "Requires DockerEngine (installed automatically if missing). The first start prints a temporary admin password in the container log (docker logs qbittorrentdocker) - log in as admin and change it immediately. Downloads land in DockerAppData/qbittorrentdocker/downloads, settings in .../config. Only the WebUI port is published: the BT listen port (6881) is not, so incoming peers are limited and speeds may be lower than a desktop client. Plain HTTP; use a TLS reverse proxy before exposing it."
+
+[es-es]
+name         = "qBittorrent"
+auth         = "qbittorrent"
+version      = "@@VERSION@@"
+descript     = "qBittorrent is a full-featured BitTorrent client with a clean web UI: add magnet links or .torrent files, queue and seed, set speed limits, search for torrents and use RSS. It runs as a non-root container on your NAS, keeps settings and resume data in the application data folder, and writes downloads into a folder you control - no desktop client needed."
+release_note = "1. First release: qBittorrent 5.3.0 from Docker Hub as a non-root container. Full WebUI with temporary first-run password, settings and resume data in the application data folder, downloads in a separate folder."
+important    = "Requires DockerEngine (installed automatically if missing). The first start prints a temporary admin password in the container log (docker logs qbittorrentdocker) - log in as admin and change it immediately. Downloads land in DockerAppData/qbittorrentdocker/downloads, settings in .../config. Only the WebUI port is published: the BT listen port (6881) is not, so incoming peers are limited and speeds may be lower than a desktop client. Plain HTTP; use a TLS reverse proxy before exposing it."
+
+[hu-hu]
+name         = "qBittorrent"
+auth         = "qbittorrent"
+version      = "@@VERSION@@"
+descript     = "qBittorrent is a full-featured BitTorrent client with a clean web UI: add magnet links or .torrent files, queue and seed, set speed limits, search for torrents and use RSS. It runs as a non-root container on your NAS, keeps settings and resume data in the application data folder, and writes downloads into a folder you control - no desktop client needed."
+release_note = "1. First release: qBittorrent 5.3.0 from Docker Hub as a non-root container. Full WebUI with temporary first-run password, settings and resume data in the application data folder, downloads in a separate folder."
+important    = "Requires DockerEngine (installed automatically if missing). The first start prints a temporary admin password in the container log (docker logs qbittorrentdocker) - log in as admin and change it immediately. Downloads land in DockerAppData/qbittorrentdocker/downloads, settings in .../config. Only the WebUI port is published: the BT listen port (6881) is not, so incoming peers are limited and speeds may be lower than a desktop client. Plain HTTP; use a TLS reverse proxy before exposing it."
+
+[ja-jp]
+name         = "qBittorrent"
+auth         = "qbittorrent"
+version      = "@@VERSION@@"
+descript     = "qBittorrent is a full-featured BitTorrent client with a clean web UI: add magnet links or .torrent files, queue and seed, set speed limits, search for torrents and use RSS. It runs as a non-root container on your NAS, keeps settings and resume data in the application data folder, and writes downloads into a folder you control - no desktop client needed."
+release_note = "1. First release: qBittorrent 5.3.0 from Docker Hub as a non-root container. Full WebUI with temporary first-run password, settings and resume data in the application data folder, downloads in a separate folder."
+important    = "Requires DockerEngine (installed automatically if missing). The first start prints a temporary admin password in the container log (docker logs qbittorrentdocker) - log in as admin and change it immediately. Downloads land in DockerAppData/qbittorrentdocker/downloads, settings in .../config. Only the WebUI port is published: the BT listen port (6881) is not, so incoming peers are limited and speeds may be lower than a desktop client. Plain HTTP; use a TLS reverse proxy before exposing it."
+
+[ko-kr]
+name         = "qBittorrent"
+auth         = "qbittorrent"
+version      = "@@VERSION@@"
+descript     = "qBittorrent is a full-featured BitTorrent client with a clean web UI: add magnet links or .torrent files, queue and seed, set speed limits, search for torrents and use RSS. It runs as a non-root container on your NAS, keeps settings and resume data in the application data folder, and writes downloads into a folder you control - no desktop client needed."
+release_note = "1. First release: qBittorrent 5.3.0 from Docker Hub as a non-root container. Full WebUI with temporary first-run password, settings and resume data in the application data folder, downloads in a separate folder."
+important    = "Requires DockerEngine (installed automatically if missing). The first start prints a temporary admin password in the container log (docker logs qbittorrentdocker) - log in as admin and change it immediately. Downloads land in DockerAppData/qbittorrentdocker/downloads, settings in .../config. Only the WebUI port is published: the BT listen port (6881) is not, so incoming peers are limited and speeds may be lower than a desktop client. Plain HTTP; use a TLS reverse proxy before exposing it."
+
+[pl-pl]
+name         = "qBittorrent"
+auth         = "qbittorrent"
+version      = "@@VERSION@@"
+descript     = "qBittorrent is a full-featured BitTorrent client with a clean web UI: add magnet links or .torrent files, queue and seed, set speed limits, search for torrents and use RSS. It runs as a non-root container on your NAS, keeps settings and resume data in the application data folder, and writes downloads into a folder you control - no desktop client needed."
+release_note = "1. First release: qBittorrent 5.3.0 from Docker Hub as a non-root container. Full WebUI with temporary first-run password, settings and resume data in the application data folder, downloads in a separate folder."
+important    = "Requires DockerEngine (installed automatically if missing). The first start prints a temporary admin password in the container log (docker logs qbittorrentdocker) - log in as admin and change it immediately. Downloads land in DockerAppData/qbittorrentdocker/downloads, settings in .../config. Only the WebUI port is published: the BT listen port (6881) is not, so incoming peers are limited and speeds may be lower than a desktop client. Plain HTTP; use a TLS reverse proxy before exposing it."
+
+[ru-ru]
+name         = "qBittorrent"
+auth         = "qbittorrent"
+version      = "@@VERSION@@"
+descript     = "qBittorrent is a full-featured BitTorrent client with a clean web UI: add magnet links or .torrent files, queue and seed, set speed limits, search for torrents and use RSS. It runs as a non-root container on your NAS, keeps settings and resume data in the application data folder, and writes downloads into a folder you control - no desktop client needed."
+release_note = "1. First release: qBittorrent 5.3.0 from Docker Hub as a non-root container. Full WebUI with temporary first-run password, settings and resume data in the application data folder, downloads in a separate folder."
+important    = "Requires DockerEngine (installed automatically if missing). The first start prints a temporary admin password in the container log (docker logs qbittorrentdocker) - log in as admin and change it immediately. Downloads land in DockerAppData/qbittorrentdocker/downloads, settings in .../config. Only the WebUI port is published: the BT listen port (6881) is not, so incoming peers are limited and speeds may be lower than a desktop client. Plain HTTP; use a TLS reverse proxy before exposing it."
+
+[tr-tr]
+name         = "qBittorrent"
+auth         = "qbittorrent"
+version      = "@@VERSION@@"
+descript     = "qBittorrent is a full-featured BitTorrent client with a clean web UI: add magnet links or .torrent files, queue and seed, set speed limits, search for torrents and use RSS. It runs as a non-root container on your NAS, keeps settings and resume data in the application data folder, and writes downloads into a folder you control - no desktop client needed."
+release_note = "1. First release: qBittorrent 5.3.0 from Docker Hub as a non-root container. Full WebUI with temporary first-run password, settings and resume data in the application data folder, downloads in a separate folder."
+important    = "Requires DockerEngine (installed automatically if missing). The first start prints a temporary admin password in the container log (docker logs qbittorrentdocker) - log in as admin and change it immediately. Downloads land in DockerAppData/qbittorrentdocker/downloads, settings in .../config. Only the WebUI port is published: the BT listen port (6881) is not, so incoming peers are limited and speeds may be lower than a desktop client. Plain HTTP; use a TLS reverse proxy before exposing it."
+
+[pt-pt]
+name         = "qBittorrent"
+auth         = "qbittorrent"
+version      = "@@VERSION@@"
+descript     = "qBittorrent is a full-featured BitTorrent client with a clean web UI: add magnet links or .torrent files, queue and seed, set speed limits, search for torrents and use RSS. It runs as a non-root container on your NAS, keeps settings and resume data in the application data folder, and writes downloads into a folder you control - no desktop client needed."
+release_note = "1. First release: qBittorrent 5.3.0 from Docker Hub as a non-root container. Full WebUI with temporary first-run password, settings and resume data in the application data folder, downloads in a separate folder."
+important    = "Requires DockerEngine (installed automatically if missing). The first start prints a temporary admin password in the container log (docker logs qbittorrentdocker) - log in as admin and change it immediately. Downloads land in DockerAppData/qbittorrentdocker/downloads, settings in .../config. Only the WebUI port is published: the BT listen port (6881) is not, so incoming peers are limited and speeds may be lower than a desktop client. Plain HTTP; use a TLS reverse proxy before exposing it."
+
+[ar-sa]
+name         = "qBittorrent"
+auth         = "qbittorrent"
+version      = "@@VERSION@@"
+descript     = "qBittorrent is a full-featured BitTorrent client with a clean web UI: add magnet links or .torrent files, queue and seed, set speed limits, search for torrents and use RSS. It runs as a non-root container on your NAS, keeps settings and resume data in the application data folder, and writes downloads into a folder you control - no desktop client needed."
+release_note = "1. First release: qBittorrent 5.3.0 from Docker Hub as a non-root container. Full WebUI with temporary first-run password, settings and resume data in the application data folder, downloads in a separate folder."
+important    = "Requires DockerEngine (installed automatically if missing). The first start prints a temporary admin password in the container log (docker logs qbittorrentdocker) - log in as admin and change it immediately. Downloads land in DockerAppData/qbittorrentdocker/downloads, settings in .../config. Only the WebUI port is published: the BT listen port (6881) is not, so incoming peers are limited and speeds may be lower than a desktop client. Plain HTTP; use a TLS reverse proxy before exposing it."
+
+[cs-cz]
+name         = "qBittorrent"
+auth         = "qbittorrent"
+version      = "@@VERSION@@"
+descript     = "qBittorrent is a full-featured BitTorrent client with a clean web UI: add magnet links or .torrent files, queue and seed, set speed limits, search for torrents and use RSS. It runs as a non-root container on your NAS, keeps settings and resume data in the application data folder, and writes downloads into a folder you control - no desktop client needed."
+release_note = "1. First release: qBittorrent 5.3.0 from Docker Hub as a non-root container. Full WebUI with temporary first-run password, settings and resume data in the application data folder, downloads in a separate folder."
+important    = "Requires DockerEngine (installed automatically if missing). The first start prints a temporary admin password in the container log (docker logs qbittorrentdocker) - log in as admin and change it immediately. Downloads land in DockerAppData/qbittorrentdocker/downloads, settings in .../config. Only the WebUI port is published: the BT listen port (6881) is not, so incoming peers are limited and speeds may be lower than a desktop client. Plain HTTP; use a TLS reverse proxy before exposing it."
+
+[he-il]
+name         = "qBittorrent"
+auth         = "qbittorrent"
+version      = "@@VERSION@@"
+descript     = "qBittorrent is a full-featured BitTorrent client with a clean web UI: add magnet links or .torrent files, queue and seed, set speed limits, search for torrents and use RSS. It runs as a non-root container on your NAS, keeps settings and resume data in the application data folder, and writes downloads into a folder you control - no desktop client needed."
+release_note = "1. First release: qBittorrent 5.3.0 from Docker Hub as a non-root container. Full WebUI with temporary first-run password, settings and resume data in the application data folder, downloads in a separate folder."
+important    = "Requires DockerEngine (installed automatically if missing). The first start prints a temporary admin password in the container log (docker logs qbittorrentdocker) - log in as admin and change it immediately. Downloads land in DockerAppData/qbittorrentdocker/downloads, settings in .../config. Only the WebUI port is published: the BT listen port (6881) is not, so incoming peers are limited and speeds may be lower than a desktop client. Plain HTTP; use a TLS reverse proxy before exposing it."
+
+[id-id]
+name         = "qBittorrent"
+auth         = "qbittorrent"
+version      = "@@VERSION@@"
+descript     = "qBittorrent is a full-featured BitTorrent client with a clean web UI: add magnet links or .torrent files, queue and seed, set speed limits, search for torrents and use RSS. It runs as a non-root container on your NAS, keeps settings and resume data in the application data folder, and writes downloads into a folder you control - no desktop client needed."
+release_note = "1. First release: qBittorrent 5.3.0 from Docker Hub as a non-root container. Full WebUI with temporary first-run password, settings and resume data in the application data folder, downloads in a separate folder."
+important    = "Requires DockerEngine (installed automatically if missing). The first start prints a temporary admin password in the container log (docker logs qbittorrentdocker) - log in as admin and change it immediately. Downloads land in DockerAppData/qbittorrentdocker/downloads, settings in .../config. Only the WebUI port is published: the BT listen port (6881) is not, so incoming peers are limited and speeds may be lower than a desktop client. Plain HTTP; use a TLS reverse proxy before exposing it."
+
+[nb-no]
+name         = "qBittorrent"
+auth         = "qbittorrent"
+version      = "@@VERSION@@"
+descript     = "qBittorrent is a full-featured BitTorrent client with a clean web UI: add magnet links or .torrent files, queue and seed, set speed limits, search for torrents and use RSS. It runs as a non-root container on your NAS, keeps settings and resume data in the application data folder, and writes downloads into a folder you control - no desktop client needed."
+release_note = "1. First release: qBittorrent 5.3.0 from Docker Hub as a non-root container. Full WebUI with temporary first-run password, settings and resume data in the application data folder, downloads in a separate folder."
+important    = "Requires DockerEngine (installed automatically if missing). The first start prints a temporary admin password in the container log (docker logs qbittorrentdocker) - log in as admin and change it immediately. Downloads land in DockerAppData/qbittorrentdocker/downloads, settings in .../config. Only the WebUI port is published: the BT listen port (6881) is not, so incoming peers are limited and speeds may be lower than a desktop client. Plain HTTP; use a TLS reverse proxy before exposing it."
+
+[nl-nl]
+name         = "qBittorrent"
+auth         = "qbittorrent"
+version      = "@@VERSION@@"
+descript     = "qBittorrent is a full-featured BitTorrent client with a clean web UI: add magnet links or .torrent files, queue and seed, set speed limits, search for torrents and use RSS. It runs as a non-root container on your NAS, keeps settings and resume data in the application data folder, and writes downloads into a folder you control - no desktop client needed."
+release_note = "1. First release: qBittorrent 5.3.0 from Docker Hub as a non-root container. Full WebUI with temporary first-run password, settings and resume data in the application data folder, downloads in a separate folder."
+important    = "Requires DockerEngine (installed automatically if missing). The first start prints a temporary admin password in the container log (docker logs qbittorrentdocker) - log in as admin and change it immediately. Downloads land in DockerAppData/qbittorrentdocker/downloads, settings in .../config. Only the WebUI port is published: the BT listen port (6881) is not, so incoming peers are limited and speeds may be lower than a desktop client. Plain HTTP; use a TLS reverse proxy before exposing it."
+
+[sv-se]
+name         = "qBittorrent"
+auth         = "qbittorrent"
+version      = "@@VERSION@@"
+descript     = "qBittorrent is a full-featured BitTorrent client with a clean web UI: add magnet links or .torrent files, queue and seed, set speed limits, search for torrents and use RSS. It runs as a non-root container on your NAS, keeps settings and resume data in the application data folder, and writes downloads into a folder you control - no desktop client needed."
+release_note = "1. First release: qBittorrent 5.3.0 from Docker Hub as a non-root container. Full WebUI with temporary first-run password, settings and resume data in the application data folder, downloads in a separate folder."
+important    = "Requires DockerEngine (installed automatically if missing). The first start prints a temporary admin password in the container log (docker logs qbittorrentdocker) - log in as admin and change it immediately. Downloads land in DockerAppData/qbittorrentdocker/downloads, settings in .../config. Only the WebUI port is published: the BT listen port (6881) is not, so incoming peers are limited and speeds may be lower than a desktop client. Plain HTTP; use a TLS reverse proxy before exposing it."
+
+[th-th]
+name         = "qBittorrent"
+auth         = "qbittorrent"
+version      = "@@VERSION@@"
+descript     = "qBittorrent is a full-featured BitTorrent client with a clean web UI: add magnet links or .torrent files, queue and seed, set speed limits, search for torrents and use RSS. It runs as a non-root container on your NAS, keeps settings and resume data in the application data folder, and writes downloads into a folder you control - no desktop client needed."
+release_note = "1. First release: qBittorrent 5.3.0 from Docker Hub as a non-root container. Full WebUI with temporary first-run password, settings and resume data in the application data folder, downloads in a separate folder."
+important    = "Requires DockerEngine (installed automatically if missing). The first start prints a temporary admin password in the container log (docker logs qbittorrentdocker) - log in as admin and change it immediately. Downloads land in DockerAppData/qbittorrentdocker/downloads, settings in .../config. Only the WebUI port is published: the BT listen port (6881) is not, so incoming peers are limited and speeds may be lower than a desktop client. Plain HTTP; use a TLS reverse proxy before exposing it."
+
+[vi-vn]
+name         = "qBittorrent"
+auth         = "qbittorrent"
+version      = "@@VERSION@@"
+descript     = "qBittorrent is a full-featured BitTorrent client with a clean web UI: add magnet links or .torrent files, queue and seed, set speed limits, search for torrents and use RSS. It runs as a non-root container on your NAS, keeps settings and resume data in the application data folder, and writes downloads into a folder you control - no desktop client needed."
+release_note = "1. First release: qBittorrent 5.3.0 from Docker Hub as a non-root container. Full WebUI with temporary first-run password, settings and resume data in the application data folder, downloads in a separate folder."
+important    = "Requires DockerEngine (installed automatically if missing). The first start prints a temporary admin password in the container log (docker logs qbittorrentdocker) - log in as admin and change it immediately. Downloads land in DockerAppData/qbittorrentdocker/downloads, settings in .../config. Only the WebUI port is published: the BT listen port (6881) is not, so incoming peers are limited and speeds may be lower than a desktop client. Plain HTTP; use a TLS reverse proxy before exposing it."
+

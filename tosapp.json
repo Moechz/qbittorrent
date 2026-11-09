@@ -1,0 +1,112 @@
+{
+  "app_id": "qbittorrentdocker",
+  "title": "qBittorrent",
+  "image": "linuxserver/qbittorrent:5.3.0",
+  "repo_name": "qbittorrent",
+  "mode": "plain",
+  "container_port": 8080,
+  "category": [
+    "Download"
+  ],
+  "volumes": [
+    {
+      "host": "/Volume1/DockerAppData/qbittorrentdocker/config",
+      "container": "/config"
+    },
+    {
+      "host": "/Volume1/DockerAppData/qbittorrentdocker/downloads",
+      "container": "/downloads"
+    }
+  ],
+  "env": {
+    "TZ": "Asia/Shanghai"
+  },
+  "auth": "qbittorrent",
+  "upstream_url": "https://github.com/qbittorrent/qBittorrent",
+  "upstream_license": "GPL-2.0",
+  "descript": "qBittorrent is a full-featured BitTorrent client with a clean web UI: add magnet links or .torrent files, queue and seed, set speed limits, search for torrents and use RSS. It runs as a non-root container on your NAS, keeps settings and resume data in the application data folder, and writes downloads into a folder you control - no desktop client needed.",
+  "release_note": "1. First release: qBittorrent 5.3.0 from Docker Hub as a non-root container. Full WebUI with temporary first-run password, settings and resume data in the application data folder, downloads in a separate folder.",
+  "important": "Requires DockerEngine (installed automatically if missing). The first start prints a temporary admin password in the container log (docker logs qbittorrentdocker) - log in as admin and change it immediately. Downloads land in DockerAppData/qbittorrentdocker/downloads, settings in .../config. Only the WebUI port is published: the BT listen port (6881) is not, so incoming peers are limited and speeds may be lower than a desktop client. Plain HTTP; use a TLS reverse proxy before exposing it.",
+  "probe": {
+    "user_in_image": "(root)",
+    "entrypoint": [
+      "/init"
+    ],
+    "cmd": null,
+    "exposed_ports": [
+      6881,
+      6881,
+      8080
+    ],
+    "declared_volumes": [
+      "/config"
+    ],
+    "image_healthcheck": [],
+    "digest": "linuxserver/qbittorrent@sha256:3d4c4545d51a690a0df15a2ff99038823a88a9822df8e794526447b9afbd7384",
+    "architecture": "x86_64",
+    "platforms": [
+      "x86_64",
+      "aarch64"
+    ],
+    "http_client_in_image": "curl",
+    "trial_run": {
+      "ok": true,
+      "http_code": "401",
+      "state": "running",
+      "paths": [],
+      "host_port": 18000,
+      "log_tail": "║                                                                         ║\n╚═════════════════════════════════════════════════════════════════════════╝\n[migrations] started\n[migrations] no migrations found\n───────────────────────────────────────\n\n      ██╗     ███████╗██╗ ██████╗\n      ██║     ██╔════╝██║██╔═══██╗\n      ██║     ███████╗██║██║   ██║\n      ██║     ╚════██║██║██║   ██║\n      ███████╗███████║██║╚██████╔╝\n      ╚══════╝╚══════╝╚═╝ ╚═════╝\n\n   Brought to you by linuxserver.io\n───────────────────────────────────────\n\nTo support LSIO projects visit:\nhttps://www.linuxserver.io/donate/\n\n───────────────────────────────────────\nGID/UID\n───────────────────────────────────────\n\nUser UID:    1000\nUser GID:    1000\n───────────────────────────────────────\nLinuxserver.io version: 5.3.0_v2.1.2-ls487\nBuild-date: 2026-11-08T13:55:37+00:00\n───────────────────────────────────────\n    \n[custom-init] No custom files found, skipping...\nWebUI will be started shortly after internal preparations. Please wait...\n\n******** Information ********\nTo control qBittorrent, access the WebUI at: http://localhost:8080\nThe WebUI administrator username is: admin\nThe WebUI administrator password was not set. A temporary password is provided for this session: ALRfCb5Lw\nYou should set your own password in program preferences.\n[ls.io-init] done.\nConnection to localhost (::1) 8080 port [tcp/http-alt] succeeded!",
+      "files_in_mounts": "/tmp/tosdocker-trial-1794243551/config/qBittorrent/rss/feeds.json\n/tmp/tosdocker-trial-1794243551/config/qBittorrent/watched_folders.json\n/tmp/tosdocker-trial-1794243551/config/qBittorrent/categories.json\n/tmp/tosdocker-trial-1794243551/config/qBittorrent/logs/qbittorrent.log\n/tmp/tosdocker-trial-1794243551/config/qBittorrent/lockfile"
+    },
+    "docker_hub": {},
+    "github": {
+      "owner": "linuxserver",
+      "repo": "docker-qbittorrent",
+      "description": "",
+      "license": "GPL-3.0",
+      "homepage": ""
+    }
+  },
+  "healthcheck": [
+    "CMD-SHELL",
+    "curl -s -o /dev/null http://127.0.0.1:8080/ || exit 1"
+  ],
+  "platform": "x86_64",
+  "user": "1000:1000",
+  "publisher": "Moechz",
+  "compose_project": "qbittorrentdocker",
+  "github_repo": "qbittorrent",
+  "upstream_version": "5.3.0",
+  "release_tag_prefix": "v",
+  "version": "5.3.0-1",
+  "help": "https://github.com/Moechz/qbittorrent/issues",
+  "official": "https://github.com/qbittorrent/qBittorrent",
+  "license": "GPL-2.0",
+  "docker_socket": false,
+  "group_add": [],
+  "healthcheck_start_period": "45s",
+  "translations": {
+    "zh-cn": {
+      "descript": "qBittorrent 是一款功能完整的 BT 客户端，自带清爽的网页界面：添加磁力链接或 .torrent、排队与做种、限速、搜索种子、RSS 订阅都可以在浏览器里完成。它以非 root 容器运行在 NAS 上，设置与续传数据保存在应用数据目录，下载文件放在你指定的目录，不需要装桌面客户端。",
+      "important": "需要 DockerEngine（缺失时应用中心会自动安装）。首次启动会在容器日志里打印临时管理员密码（docker logs qbittorrentdocker），用 admin 登录后请立刻修改。下载文件在 DockerAppData/qbittorrentdocker/downloads，设置在 .../config。只发布了 WebUI 端口，BT 监听端口（6881）没有发布，因此只能主动连出、入站连接较少，速度可能不如桌面客户端；如运营商封锁 P2P 请配合 VPN/代理。界面为纯 HTTP，外网访问请配置带 TLS 的反向代理。",
+      "release_note": "1. 首个版本：基于 Docker Hub 的 qBittorrent 5.3.0，以非 root 容器运行。完整 WebUI 与首次临时密码，设置与续传数据保存在应用数据目录，下载文件单独存放。"
+    },
+    "zh-hk": {
+      "descript": "qBittorrent 是一款功能完整的 BT 客戶端，自帶清爽的網頁介面：新增磁力連結或 .torrent、排隊與做種、限速、搜尋種子、RSS 訂閱都可以在瀏覽器裡完成。它以非 root 容器運行在 NAS 上，設定與續傳資料保存在應用資料目錄，下載檔案放在你指定的目錄，不需要裝桌面客戶端。",
+      "important": "需要 DockerEngine（缺少時應用中心會自動安裝）。首次啟動會在容器日誌裡印出臨時管理員密碼（docker logs qbittorrentdocker），用 admin 登入後請立刻修改。下載檔案在 DockerAppData/qbittorrentdocker/downloads，設定在 .../config。只發佈了 WebUI 端口，BT 監聽端口（6881）沒有發佈，因此只能主動連出、入站連線較少，速度可能不如桌面客戶端；如ISP封鎖 P2P 請配合 VPN/代理。介面為純 HTTP，外網存取請配置帶 TLS 的反向代理。",
+      "release_note": "1. 首個版本：基於 Docker Hub 的 qBittorrent 5.3.0，以非 root 容器運行。完整 WebUI 與首次臨時密碼，設定與續傳資料保存在應用資料目錄，下載檔案單獨存放。"
+    }
+  },
+  "data_notes": "`/config` (mounted from `DockerAppData/qbittorrentdocker/config`) keeps `qBittorrent/qBittorrent.conf` plus the resume data; `/downloads` (mounted from `.../downloads`) is where finished and in-progress torrents are written.",
+  "design_notes": [
+    "**Runs unprivileged with the upstream entrypoint.** The LinuxServer.io image in this tag can run as uid 1000, so no wrapper is needed; the volumes are chowned by the installer.",
+    "**First-run password in the log.** No password is baked into the package: qBittorrent generates a temporary one and the user changes it in the WebUI.",
+    "**One published port.** Only the WebUI (8080) is exposed; the BT listen port stays inside the container, which is the trade-off for the store's single-port rule."
+  ],
+  "limitations": [
+    "- The WebUI is plain HTTP; use a TLS reverse proxy before exposing it to the internet.",
+    "- The BitTorrent listen port (6881) is not published, so incoming peers cannot connect and speeds may be lower than a desktop client.",
+    "- The downloads folder is not visible in TOS File Manager; manage files over SMB/SSH or add the path to a backup task."
+  ],
+  "host_port": 8041
+}
