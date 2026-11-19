@@ -3,7 +3,7 @@
   "title": "qBittorrent",
   "image": "linuxserver/qbittorrent:5.3.0",
   "repo_name": "qbittorrent",
-  "mode": "plain",
+  "mode": "wrapper",
   "container_port": 8080,
   "category": [
     "Download"
@@ -25,8 +25,8 @@
   "upstream_url": "https://github.com/qbittorrent/qBittorrent",
   "upstream_license": "GPL-2.0",
   "descript": "qBittorrent is a full-featured BitTorrent client with a clean web UI: add magnet links or .torrent files, queue and seed, set speed limits, search for torrents and use RSS. It runs as a non-root container on your NAS, keeps settings and resume data in the application data folder, and writes downloads into a folder you control - no desktop client needed.",
-  "release_note": "1. First release: qBittorrent 5.3.0 from Docker Hub as a non-root container. Full WebUI with temporary first-run password, settings and resume data in the application data folder, downloads in a separate folder.",
-  "important": "Requires DockerEngine (installed automatically if missing). The first start prints a temporary admin password in the container log (docker logs qbittorrentdocker) - log in as admin and change it immediately. Downloads land in DockerAppData/qbittorrentdocker/downloads, settings in .../config. Only the WebUI port is published: the BT listen port (6881) is not, so incoming peers are limited and speeds may be lower than a desktop client. Plain HTTP; use a TLS reverse proxy before exposing it.",
+  "release_note": "1. The WebUI now opens through the mapped port and behind a reverse proxy: the package switches off qBittorrent's Host-header validation before start-up, which used to answer 401 whenever the Host port was not 8080 and made the page look broken. 2. Privacy policy added (repository + website) and every third-party service the client can contact is disclosed. 3. Health check now fails on a 401/5xx instead of only checking that the port answers.",
+  "important": "Requires DockerEngine. First start prints a temporary admin password in the log (docker logs qbittorrentdocker) - log in as admin and change it. Downloads: DockerAppData/qbittorrentdocker/downloads, settings: .../config. Only the WebUI port is published; the BT port (6881) is not, so incoming peers are limited and speeds may be lower. Plain HTTP; use a TLS reverse proxy before exposing it. Privacy policy: https://www.moechz.com/privacy.html",
   "probe": {
     "user_in_image": "(root)",
     "entrypoint": [
@@ -78,8 +78,8 @@
   "github_repo": "qbittorrent",
   "upstream_version": "5.3.0",
   "release_tag_prefix": "v",
-  "version": "5.3.0-1",
-  "help": "https://github.com/Moechz/qbittorrent/issues",
+  "version": "5.3.0-2",
+  "help": "https://github.com/Moechz/qbittorrent/blob/main/PRIVACY.md",
   "official": "https://github.com/qbittorrent/qBittorrent",
   "license": "GPL-2.0",
   "docker_socket": false,
@@ -88,13 +88,13 @@
   "translations": {
     "zh-cn": {
       "descript": "qBittorrent 是一款功能完整的 BT 客户端，自带清爽的网页界面：添加磁力链接或 .torrent、排队与做种、限速、搜索种子、RSS 订阅都可以在浏览器里完成。它以非 root 容器运行在 NAS 上，设置与续传数据保存在应用数据目录，下载文件放在你指定的目录，不需要装桌面客户端。",
-      "important": "需要 DockerEngine（缺失时应用中心会自动安装）。首次启动会在容器日志里打印临时管理员密码（docker logs qbittorrentdocker），用 admin 登录后请立刻修改。下载文件在 DockerAppData/qbittorrentdocker/downloads，设置在 .../config。只发布了 WebUI 端口，BT 监听端口（6881）没有发布，因此只能主动连出、入站连接较少，速度可能不如桌面客户端；如运营商封锁 P2P 请配合 VPN/代理。界面为纯 HTTP，外网访问请配置带 TLS 的反向代理。",
-      "release_note": "1. 首个版本：基于 Docker Hub 的 qBittorrent 5.3.0，以非 root 容器运行。完整 WebUI 与首次临时密码，设置与续传数据保存在应用数据目录，下载文件单独存放。"
+      "important": "需要 DockerEngine。首次启动会在日志里打印临时管理员密码（docker logs qbittorrentdocker），用 admin 登录后请立即修改。下载文件在 DockerAppData/qbittorrentdocker/downloads，设置在 .../config。只发布 WebUI 端口，BT 端口（6881）未发布，入站连接较少、速度可能不如桌面客户端。界面为 HTTP，外网访问请配置带 TLS 的反向代理。隐私政策：https://www.moechz.com/privacy.html",
+      "release_note": "1. 修复 WebUI 打不开：通过端口映射（8041→8080）或反向代理访问时，qBittorrent 的 Host 头校验会一律返回 401，页面与静态资源都加载不出来；现在启动前关闭该校验（登录与 CSRF 防护不变）。2. 新增隐私政策（仓库 + 网站），并逐项披露客户端可能访问的第三方服务。3. 健康检查改为对 401/5xx 判失败。"
     },
     "zh-hk": {
       "descript": "qBittorrent 是一款功能完整的 BT 客戶端，自帶清爽的網頁介面：新增磁力連結或 .torrent、排隊與做種、限速、搜尋種子、RSS 訂閱都可以在瀏覽器裡完成。它以非 root 容器運行在 NAS 上，設定與續傳資料保存在應用資料目錄，下載檔案放在你指定的目錄，不需要裝桌面客戶端。",
-      "important": "需要 DockerEngine（缺少時應用中心會自動安裝）。首次啟動會在容器日誌裡印出臨時管理員密碼（docker logs qbittorrentdocker），用 admin 登入後請立刻修改。下載檔案在 DockerAppData/qbittorrentdocker/downloads，設定在 .../config。只發佈了 WebUI 端口，BT 監聽端口（6881）沒有發佈，因此只能主動連出、入站連線較少，速度可能不如桌面客戶端；如ISP封鎖 P2P 請配合 VPN/代理。介面為純 HTTP，外網存取請配置帶 TLS 的反向代理。",
-      "release_note": "1. 首個版本：基於 Docker Hub 的 qBittorrent 5.3.0，以非 root 容器運行。完整 WebUI 與首次臨時密碼，設定與續傳資料保存在應用資料目錄，下載檔案單獨存放。"
+      "important": "需要 DockerEngine。首次啟動會在日誌裡印出臨時管理員密碼（docker logs qbittorrentdocker），用 admin 登入後請立即修改。下載檔案在 DockerAppData/qbittorrentdocker/downloads，設定在 .../config。只發佈 WebUI 端口，BT 端口（6881）未發佈，入站連線較少、速度可能不如桌面客戶端。介面為 HTTP，外網存取請配置帶 TLS 的反向代理。隱私政策：https://www.moechz.com/privacy.html",
+      "release_note": "1. 修復 WebUI 打不開：透過端口映射（8041→8080）或反向代理存取時，qBittorrent 的 Host 標頭檢查會一律回傳 401，頁面與靜態資源都載入不出來；現在啟動前關閉該檢查（登入與 CSRF 防護不變）。2. 新增隱私政策（倉庫 + 網站），並逐項披露客戶端可能存取的第三方服務。3. 健康檢查改為對 401/5xx 判定失敗。"
     }
   },
   "data_notes": "`/config` (mounted from `DockerAppData/qbittorrentdocker/config`) keeps `qBittorrent/qBittorrent.conf` plus the resume data; `/downloads` (mounted from `.../downloads`) is where finished and in-progress torrents are written.",
@@ -108,5 +108,14 @@
     "- The BitTorrent listen port (6881) is not published, so incoming peers cannot connect and speeds may be lower than a desktop client.",
     "- The downloads folder is not visible in TOS File Manager; manage files over SMB/SSH or add the path to a backup task."
   ],
-  "host_port": 8041
+  "host_port": 8041,
+  "platforms": [
+    "x86_64",
+    "aarch64"
+  ],
+  "entrypoint_file": "specs/qbittorrent-entrypoint.sh",
+  "http_path": "/",
+  "runtime_files": [
+    "config/qBittorrent/qBittorrent.conf"
+  ]
 }

@@ -17,6 +17,11 @@
 #           x-app-meta as the last block.
 # Escaping: docker compose interpolates ${VAR}/$VAR in compose files, so any
 #           '$' meant for the shell is written '$$'.
+# Entrypoint: the upstream /init is wrapped (src/entrypoint.sh) so that
+#           WebUI\HostHeaderValidation is off before qBittorrent starts. Without
+#           it every request through a mapped port (8041 -> 8080) or a reverse
+#           proxy is answered with 401 and the WebUI cannot load. Login and
+#           CSRF protection are unchanged.
 #
 # NOTE for maintainers: never place a comment line directly in front of a
 # "- value" sequence item (ports, volumes, ...). The official
@@ -30,6 +35,10 @@ services:
     container_name: qbittorrentdocker
     restart: unless-stopped
     user: "1000:1000"
+    entrypoint: ["/bin/sh", "-c"]
+    command:
+      - |
+        @@ENTRYPOINT_SH@@
     ports:
       - "8041:8080"
     environment:
@@ -38,11 +47,12 @@ services:
       - /Volume1/DockerAppData/qbittorrentdocker/config:/config
       - /Volume1/DockerAppData/qbittorrentdocker/downloads:/downloads
     healthcheck:
-      test: ["CMD-SHELL", "curl -s -o /dev/null http://127.0.0.1:8080/ || exit 1"]
+      # -f: a 401/5xx is a failure, so a broken WebUI can never look healthy.
+      test: ["CMD-SHELL", "curl -fsS -o /dev/null http://127.0.0.1:8080/ || exit 1"]
       interval: 30s
       timeout: 10s
-      retries: 3
-      start_period: 45s
+      retries: 5
+      start_period: 60s
 
 # TOS App Center web metadata (must be the last block of the file):
 # web.port is the published host port above, protocol is http.
