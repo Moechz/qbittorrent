@@ -111,6 +111,16 @@ for s in secs:
     chk(i is None or len(i.group(1)) <= 512, f"[{s}] important longer than 512 chars")
     chk(f'version      = "{ver}"' in body, f"[{s}] version != {ver}")
 chk(re.search(r"\bbeta\b", lang, re.I) is None, "lang must not contain the word 'beta' (V11)")
+# The store parses .lang as INI: an ASCII ';' starts a comment, truncating the
+# description and sometimes leaving a stray quote in the listing. Values must
+# use the full-width '；' or a rewritten sentence instead.
+for _line in lang.splitlines():
+    if _line.lstrip().startswith("#"):
+        continue
+    if ";" in _line:
+        errs.append("lang values must not contain ASCII ';' (the store treats it as an "
+                    "INI comment and truncates the description); use '；' or rewrite")
+        break
 
 # ---- svg icon ---------------------------------------------------------------
 svg_path = stage / f"{appid}.svg"

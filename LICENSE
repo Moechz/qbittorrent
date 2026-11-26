@@ -23,12 +23,14 @@ SOFTWARE.
 -------------------------------------------------------------------------------
 Third-party notices
 
-qBittorrent is Copyright its upstream authors and is distributed under
-GPL-2.0. This repository only packages the
-official container image `linuxserver/qbittorrent:5.3.0` from Docker Hub unmodified; no
-upstream source code is distributed here. All trademarks belong to their owners.
-This is an independent community package, not affiliated with the upstream
-project or TerraMaster.
+qBittorrent is Copyright its upstream authors. The source is licensed under
+GPL-2.0-or-later; the distributed binary is GPL-3.0-or-later (it contains GPLv3+ assets),
+both with the OpenSSL linking exception. See the upstream COPYING file. This repository
+only packages the official container image `linuxserver/qbittorrent:5.3.0` (index digest
+sha256:a8083a3337a175e84374e3c8cf34ab76566c54502a2e8580e53b6deaa5b2f619) from Docker Hub
+unmodified; no upstream source code is distributed here. The image's own build scripts are
+GPL-3.0-only per its label. All trademarks belong to their owners. This is an independent
+community package, not affiliated with the upstream project, LinuxServer.io or TerraMaster.
 
 TOSAppSelfTestingTool is an official TerraMaster utility, redistributed here
 unmodified for local package validation.

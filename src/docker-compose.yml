@@ -2,26 +2,36 @@
 # qBittorrent for TerraMaster TOS 7 (Docker application)
 # ===========================================================================
 # Upstream image : linuxserver/qbittorrent:5.3.0 (Docker Hub, used unmodified)
+#                  pinned by the OCI index digest of the 2026-11-23 build
+#                  (5.3.0_v2.1.3-ls489, linux/amd64 + linux/arm64)
 #                  -> https://github.com/qbittorrent/qBittorrent
 #
 # Ports   : host 8041 -> container 8080. The host port is in the
 #           TOS-recommended 8000-19999 range and is not one of the reserved
-#           ports (22/80/443/445/3306/5050/5432/6379/8181/8443).
+#           ports (22/80/443/445/3306/5050/5432/6379/8181/8443). The BitTorrent
+#           listen port 6881 is intentionally not published (store single-port
+#           rule); outgoing transfers still work.
 # Volumes : all persistent data lives below
 #           /Volume1/DockerAppData/qbittorrentdocker/. The /Volume* wildcard is
 #           deliberately NOT used: the platform does not expand it.
 # TOS rules honoured: Docker Hub image with a fixed tag (never ':latest'),
 #           container_name == application id, restart: unless-stopped,
-#           non-root user, no privileged mode, no network_mode: host, no
-#           cap_add, explicit TZ, a healthcheck on the only service, and
-#           x-app-meta as the last block.
+#           non-root user, all capabilities dropped, no-new-privileges,
+#           no privileged mode, no network_mode: host, no cap_add, explicit TZ,
+#           a healthcheck on the only service, and x-app-meta as the last block.
 # Escaping: docker compose interpolates ${VAR}/$VAR in compose files, so any
 #           '$' meant for the shell is written '$$'.
 # Entrypoint: the upstream /init is wrapped (src/entrypoint.sh) so that
 #           WebUI\HostHeaderValidation is off before qBittorrent starts. Without
 #           it every request through a mapped port (8041 -> 8080) or a reverse
 #           proxy is answered with 401 and the WebUI cannot load. Login and
-#           CSRF protection are unchanged.
+#           CSRF protection are unchanged. The wrapper also seeds the image's
+#           /defaults config (correct /downloads save path, UPnP off) and
+#           creates a per-install random WebUI password, so no password is
+#           printed into the container log.
+# tmpfs  : s6-overlay needs /run to belong to uid 1000 before it starts. With
+#          cap_drop: ALL the preinit cannot chown it, so /run is pre-mounted as
+#          a tmpfs owned by uid/gid 1000 with exec (s6 runs init from /run).
 #
 # NOTE for maintainers: never place a comment line directly in front of a
 # "- value" sequence item (ports, volumes, ...). The official
@@ -31,10 +41,17 @@
 
 services:
   qbittorrentdocker:
-    image: linuxserver/qbittorrent:5.3.0
+    image: linuxserver/qbittorrent:5.3.0@sha256:a8083a3337a175e84374e3c8cf34ab76566c54502a2e8580e53b6deaa5b2f619
     container_name: qbittorrentdocker
     restart: unless-stopped
+    stop_grace_period: 30s
     user: "1000:1000"
+    cap_drop:
+      - ALL
+    security_opt:
+      - "no-new-privileges:true"
+    tmpfs:
+      - /run:rw,exec,nosuid,nodev,mode=0755,uid=1000,gid=1000
     entrypoint: ["/bin/sh", "-c"]
     command:
       - |
@@ -52,7 +69,7 @@ services:
       interval: 30s
       timeout: 10s
       retries: 5
-      start_period: 60s
+      start_period: 90s
 
 # TOS App Center web metadata (must be the last block of the file):
 # web.port is the published host port above, protocol is http.
